@@ -11,13 +11,12 @@ Icinga2 is the successor of Icinga. It introduces an easier template-driven, obj
 - [X] keyword completion
 - [X] basic commenting
 * TODOS
-** comments
-*** TODO integrate commenting, I want to be able to make comments with comment region
-*** TODO better comments for multiple lines
-** integrate with customize
-*** TODO custom variables
-custom colors, etc for attributes, categories, ...
-** integrate with local icinga2 instance
-*** TODO use local icinga2 instance for syntax checks
-*** TODO keyword completion based on full configuration, eq. complete hostnames, etc
+- comments
+  - [ ] integrate commenting, I want to be able to make comments with comment region
+  - [ ] better comments for multiple lines
+- integrate with customize
+  - [ ] custom variables: custom colors, etc for attributes, categories, ...
+- integrate with local icinga2 instance
+  - [ ] use local icinga2 instance for syntax checks
+  - [ ] keyword completion based on full configuration, eq. complete hostnames, etc
 

@@ -1,0 +1,23 @@
+* icinga2-mode.el
+
+a simple emacs mode for editing icinga2 configuration files
+
+Icinga2 is the successor of Icinga. It introduces an easier template-driven, object-based configuration format.
+
+[[https://www.icinga.org/icinga2/][Icinga2 homepage]]
+
+* current status
+- [X] basic syntax highlighting
+- [X] keyword completion
+- [X] basic commenting
+* TODOS
+** comments
+*** TODO integrate commenting, I want to be able to make comments with comment region
+*** TODO better comments for multiple lines
+** integrate with customize
+*** TODO custom variables
+custom colors, etc for attributes, categories, ...
+** integrate with local icinga2 instance
+*** TODO use local icinga2 instance for syntax checks
+*** TODO keyword completion based on full configuration, eq. complete hostnames, etc
+

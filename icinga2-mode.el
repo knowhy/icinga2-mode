@@ -24,7 +24,6 @@
   "Icinga2 mode."
   :group 'comm)
 
-
 (defvar icinga2-mode-hook nil)
 
 ;; syntax highlighting
@@ -56,26 +55,22 @@
 ;; create the list for font-lock.
 ;; each class of keyword is given a particular face
 (setq icinga2-font-lock-keywords
-  `(
-    (,icinga2-type-regexp . font-lock-type-face)
-    (,icinga2-constant-regexp . font-lock-constant-face)
-    (,icinga2-event-regexp . font-lock-builtin-face)
-    (,icinga2-functions-regexp . font-lock-function-name-face)
-    (,icinga2-keywords-regexp . font-lock-keyword-face)
-))
+      `(
+	(,icinga2-type-regexp . font-lock-type-face)
+	(,icinga2-constant-regexp . font-lock-constant-face)
+	(,icinga2-event-regexp . font-lock-builtin-face)
+	(,icinga2-functions-regexp . font-lock-function-name-face)
+	(,icinga2-keywords-regexp . font-lock-keyword-face)))
 
 ;; command to comment/uncomment text
 (defun icinga2-comment-dwim (arg)
-  "Comment or uncomment current line or region in a smart way.
-For detail, see `comment-dwim'."
+  "Comment or uncomment current line or region in a smart way. For detail, see `comment-dwim'."
   (interactive "*P")
   (require 'newcomment)
   (let (
         (comment-start "//") (comment-end "")
         )
-    (comment-dwim arg)
-    )
-  )
+    (comment-dwim arg)))
 
 ;; syntax table
 (defvar icinga2-syntax-table nil "Syntax table for `icinga2-mode'.")
@@ -85,9 +80,8 @@ For detail, see `comment-dwim'."
 	;; C++ style comment “// …” 
 	(modify-syntax-entry ?\/ ". 12b" synTable)
 	(modify-syntax-entry ?\n "> b" synTable)
-
-        synTable)
-      )
+	
+        synTable))
 
 ;; completion
 (setq icinga2-keyword-list (append icinga2-attribute-keywords icinga2-cleanup-items-keywords icinga2-category-keywords icinga2-global-variables-keywords icinga2-macros-keywords))
@@ -116,9 +110,7 @@ For detail, see `comment-dwim'."
                (display-completion-list 
                 (all-completions meat icinga2-keyword-list)
                 meat))
-             (message "Making completion list…%s" "done")))
-    )
-  )
+             (message "Making completion list…%s" "done")))))
 
 ;; clear memory
 (setq icinga2-keywords-regexp nil)
@@ -137,16 +129,14 @@ For detail, see `comment-dwim'."
     (define-key icinga2-mode-map [remap comment-dwim] 'icinga2-comment-dwim)
     (define-key map "M-TAB" 'icinga2-complete-symbol)
     map)
-  "Keymap for icinga2 major mode"
-  )
+  "Keymap for icinga2 major mode")
 
 ;; define the mode
 (define-derived-mode icinga2-mode fundamental-mode
   "Major mode for editing Icinga2 configuration files"
-
+  
   :syntax-table icinga2-syntax-table
   ;; code for syntax highlighting
-  (setq font-lock-defaults '((icinga2-font-lock-keywords)))
-  )
+  (setq font-lock-defaults '((icinga2-font-lock-keywords))))
 
 (provide 'icinga2-mode)

@@ -123,13 +123,12 @@
 
 (global-set-key (kbd "M-TAB") 'icinga2-complete-symbol)
 
-(defvar icinga2-mode-map
-  (let ((map (make-keymap)))
-    (define-key map "\C-j" 'newline-and-indent)
-    (define-key icinga2-mode-map [remap comment-dwim] 'icinga2-comment-dwim)
-    (define-key map "M-TAB" 'icinga2-complete-symbol)
-    map)
-  "Keymap for icinga2 major mode")
+(defvar icinga2-mode-map nil "Keymap for `icinga2-mode'")
+
+(progn
+  (setq icinga2-mode-map (make-sparse-keymap))
+  (define-key icinga2-mode-map (kbd "C-j") 'newline-and-indent)
+  (define-key icinga2-mode-map (kbd "M-TAB") 'icinga2-complete-symbol))
 
 ;; define the mode
 (define-derived-mode icinga2-mode fundamental-mode

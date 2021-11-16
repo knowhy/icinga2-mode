@@ -77,10 +77,10 @@
 (setq icinga2-syntax-table
       (let ((synTable (make-syntax-table)))
 
-	;; C++ style comment “// …” 
+	;; C++ style comment “// …”
 	(modify-syntax-entry ?\/ ". 12b" synTable)
 	(modify-syntax-entry ?\n "> b" synTable)
-	
+
         synTable))
 
 ;; completion
@@ -92,12 +92,12 @@
   (let ((posEnd (point))
         (meat (thing-at-point 'symbol))
         maxMatchResult)
-    
+
     ;; when nil, set it to empty string, so user can see all lang's keywords.
     ;; if not done, try-completion on nil result lisp error.
     (when (not meat) (setq meat ""))
     (setq maxMatchResult (try-completion meat icinga2-keyword-list))
-    
+
     (cond ((eq maxMatchResult t))
           ((null maxMatchResult)
            (message "Can't find completion for “%s”" meat)
@@ -107,7 +107,7 @@
            (insert maxMatchResult))
           (t (message "Making completion list…")
              (with-output-to-temp-buffer "*Completions*"
-               (display-completion-list 
+               (display-completion-list
                 (all-completions meat icinga2-keyword-list)
                 meat))
              (message "Making completion list…%s" "done")))))
@@ -133,7 +133,7 @@
 ;; define the mode
 (define-derived-mode icinga2-mode fundamental-mode
   "Major mode for editing Icinga2 configuration files"
-  
+
   :syntax-table icinga2-syntax-table
   ;; code for syntax highlighting
   (setq font-lock-defaults '((icinga2-font-lock-keywords))))
